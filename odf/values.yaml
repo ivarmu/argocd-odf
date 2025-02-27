@@ -10,11 +10,11 @@ mcgstandalone:
   enabled: false
 # IF deploying MCG standalone the storage claas that will be used for the
 # Noobaa Database, and PV backing store on-premise.
-  scname: 'gp3-csi'
+  scname: 'thin-csi'
 
 odf:
 # ODF Version/Channel
-  channel: 'stable-4.11'
+  channel: 'stable-4.17'
 # Resource request/limits per service
   mon:
     requests:
@@ -62,7 +62,7 @@ odf:
 
 ### RGW section Only relevant if deploying in AWS
 # If RGW enabled, RGW object store will be deployed in AWS
-rgw: 
+rgw:
   enabled: true
 # Enable S3 RGW endpoint with SSL
   ssl: true
@@ -80,15 +80,15 @@ cephtools:
   enabled: true
 
 # If OCP Cluster is deployed in AWS and dedicated option enabled it will deploy 3 ODF workers(m5.4xlarge) using machinesets one per AZ, .
-dedicated: 
+dedicated:
   enabled: false
-  aws:
-    #you can use $ oc get machineset -n openshift-machine-api -o jsonpath='{.items[0].metadata.labels.machine\.openshift\.io/cluster-api-cluster}'
-    clusterid: 'cluster-tlhvx-wmzb6'
-    #youn can use $oc get machineset -n openshift-machine-api -o jsonpath='{.items[0].spec.template.spec.providerSpec.value.placement.region}' 
-    region: 'us-east-2'
-    #you can use $oc get machineset -n openshift-machine-api -o jsonpath='{.items[0].spec.template.spec.providerSpec.value.ami.id}'
-    coreosami: 'ami-03d9208319c96db0c'
+  # aws:
+  #   #you can use $ oc get machineset -n openshift-machine-api -o jsonpath='{.items[0].metadata.labels.machine\.openshift\.io/cluster-api-cluster}'
+  #   clusterid: 'cluster-tlhvx-wmzb6'
+  #   #youn can use $oc get machineset -n openshift-machine-api -o jsonpath='{.items[0].spec.template.spec.providerSpec.value.placement.region}'
+  #   region: 'us-east-2'
+  #   #you can use $oc get machineset -n openshift-machine-api -o jsonpath='{.items[0].spec.template.spec.providerSpec.value.ami.id}'
+  #   coreosami: 'ami-03d9208319c96db0c'
 
 # Enable Flexible scaling.
 # flexibleScaling: false
